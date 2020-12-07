@@ -96,3 +96,4 @@ Route::get('/supermarket/category/show', function () {
 });
 
 Route::resource('/user_type','UserTypeController');
+Route::resource('/type','TypeController');
