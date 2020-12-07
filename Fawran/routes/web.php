@@ -94,3 +94,5 @@ Route::get('/supermarket/show', function () {
 Route::get('/supermarket/category/show', function () {
     return view('users.supermarket.showMaterials');
 });
+
+Route::resource('/user_type','UserTypeController');

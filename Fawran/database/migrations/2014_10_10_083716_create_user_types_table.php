@@ -17,7 +17,7 @@ class CreateUserTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('name_ar');
-            $table->integer('count');
+            $table->integer('count')->nullable()->change();
             $table->timestamps();
         });
     }

@@ -10,6 +10,6 @@ $factory->define(User_type::class, function (Faker $faker) {
         //
         'name'=>$faker->word,
         'name_ar'=>$faker->word,
-        'count'=>$faker->randomNumber(2, false),
+      
     ];
 });
