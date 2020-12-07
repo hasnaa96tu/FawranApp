@@ -14,7 +14,8 @@ $factory->define(Order::class, function (Faker $faker) {
       'status'=> $faker->numberBetween(1, 4),
       'location'=>$faker->sentence,
       'location_ar'=>$faker->sentence,
-      'user_id'=>'factory(App\User::class)',
+      'driver_id'=>'factory(App\User::class)',
+      'customer_id'=>'factory(App\Customer::class)',
       'cost'=>$faker->randomFloat(2,100,20000),
       'distance'=>$faker->randomFloat(2,100,20000),
     ];

@@ -30,10 +30,7 @@ class CreateOrdersTable extends Migration
           ->references('id')
           ->on('types')
           ->onDelete('cascade');
-          $table->foreign('user_id')
-        ->references('id')
-        ->on('users')
-        ->onDelete('cascade');
+        
         });
     }
 

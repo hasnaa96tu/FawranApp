@@ -15,6 +15,6 @@ $factory->define(Pharmacy_order_detail::class, function (Faker $faker) {
          'quantity'=>$faker->randomNumber(2, false),
          'total_price'=>$faker->randomFloat(2,100,20000),
          'is_RX'=>$faker->boolean() ,
-         'preciption_img'=>$faker->image('public/storage',640, 480)
+         'preciption_img'=>$faker->image('public/assets/fakeimages',640, 480)
     ];
 });

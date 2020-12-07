@@ -73,14 +73,15 @@ class DatabaseSeeder extends Seeder
                 factory(App\Available_time::class)
                         ->create(['ph_sm_id' => $i,'type_id'=>3]);
       }
-
+      //make 1  customer
+      $cus= factory(App\Customer::class)->create(['user_id'=>5]);
       //make 4 orders
       for($i=1 ; $i<3 ;$i++){
 
         factory(App\Order::class)
-                ->create(['user_id' => 5,'type_id'=>2]);
+                ->create(['customer_id' => 1,'type_id'=>2,'driver_id'=>8]);
                 factory(App\Order::class)
-                        ->create(['user_id' => 5,'type_id'=>3]);
+                        ->create(['customer_id' => 1,'type_id'=>3,'driver_id'=>8]);
       }
       //make 2 supermarket_order_details
       $k=1;
@@ -99,8 +100,7 @@ class DatabaseSeeder extends Seeder
                 $k++;
       }
 
-      //make 1  customer
-      $cus= factory(App\Customer::class)->create(['user_id'=>5]);
+
       //make 1 feed_back
       $fb = factory(App\FeedBack::class)->create(['customer_id'=>$cus->id]);
       //make 1 app rate
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
       $ods=$offers->each(function($offer) {
          factory(App\Offer_detail::class)
                  ->create(['offer_id' => $offer->id,'product_id'=>1]);
-              
+
       });
 
       $this->command->info("Database seeded.");

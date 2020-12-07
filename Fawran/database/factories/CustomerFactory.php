@@ -13,6 +13,6 @@ $factory->define(Customer::class, function (Faker $faker) {
       'location'=>$faker->sentence,
       'fullname_ar'=> $faker->name,
       'location_ar'=>$faker->sentence,
-      'image'=>$faker->image('public/storage',640, 480),
+      'image'=>$faker->image('public/assets/fakeimages',640, 480),
     ];
 });

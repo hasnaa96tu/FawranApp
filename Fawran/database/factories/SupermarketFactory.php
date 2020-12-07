@@ -15,6 +15,6 @@ $factory->define(Supermarket::class, function (Faker $faker) {
          'location'=>$faker->sentence,
          'location_ar'=>$faker->sentence,
          'phone_number'=>$faker->randomNumber(7, true),
-           'image'=>$faker->image('public/storage',640, 480),
+           'image'=>$faker->image('public/assets/fakeimages',640, 480),
     ];
 });
