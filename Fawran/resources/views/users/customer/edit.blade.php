@@ -19,11 +19,12 @@
             <div class="card-icon">
               <i class="material-icons">contacts</i>
             </div>
-            <h4 class="card-title">Add Customer</h4>
+            <h4 class="card-title">edit Customer</h4>
           </div>
           <div class="card-body ">
-            <form class="form-horizontal"action ="{{route('customer.store')}}" method = "post" enctype="multipart/form-data">
-             <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+            <form class="form-horizontal" action ="{{route('customer.update',$cus->id)}}" method = "post" enctype="multipart/form-data">
+                      <input type="hidden" name="_method" value="PUT">
+                   <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
 
               <div class="row">
@@ -39,7 +40,7 @@
                       <span class="btn  btn-rose btn-file">
                         <span class="fileinput-new">Add Photo</span>
                         <span class="fileinput-exists">Change</span>
-                        <input type="file" name="image" />
+                        <input type="file" name="image"  />
                       </span>
                       <br />
                       <a href="#pablo" class="btn btn-danger  fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
@@ -52,7 +53,7 @@
                 <label class="col-md-3 col-form-label">Fullname</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="fullname">
+                    <input type="text" class="form-control" name="fullname" value="{{$cus->fullname}}">
                   </div>
                 </div>
               </div>
@@ -60,7 +61,7 @@
                 <label class="col-md-3 col-form-label">fullname in Arabic</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="fullname_ar">
+                    <input type="text" class="form-control" name="fullname_ar"value="{{$cus->fullname_ar}}">
                   </div>
                 </div>
               </div>
@@ -68,7 +69,7 @@
                 <label class="col-md-3 col-form-label">Phone number</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="number" class="form-control" name="phone_number">
+                    <input type="number" class="form-control" name="phone_number"value="{{$cus->phone_number}}">
                   </div>
                 </div>
               </div>
@@ -76,7 +77,7 @@
                 <label class="col-md-3 col-form-label"> address</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="location">
+                    <input type="text" class="form-control" name="location"value="{{$cus->location}}">
                   </div>
                 </div>
               </div>
@@ -84,62 +85,18 @@
                 <label class="col-md-3 col-form-label"> address in Arabic</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="location_ar">
+                    <input type="text" class="form-control" name="location_ar"value="{{$cus->location_ar}}">
                   </div>
                 </div>
               </div>
 
-              <div class="row">
-                <label class="col-md-3 col-form-label">username</label>
-                <div class="col-md-9">
-                  <div class="form-group has-default">
-                    <input type="text" class="form-control" name="name">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <label class="col-md-3 col-form-label">Email</label>
-                <div class="col-md-9">
-                  <div class="form-group has-default">
-                    <input type="email" class="form-control" name="email">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <label class="col-md-3 col-form-label">Password</label>
-                <div class="col-md-9">
-                  <div class="form-group">
-                    <input type="password" class="form-control" name="password">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <label class="col-md-3 col-form-label"> confirm Password</label>
-                <div class="col-md-9">
-                  <div class="form-group">
-                    <input type="password" class="form-control" name="password_confirmation">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <label class="col-md-3"></label>
-                <div class="col-md-9">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value=""> Remember me
-                      <span class="form-check-sign">
-                        <span class="check"></span>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
+
 
           </div>
           <div class="card-footer ">
             <div class="row">
               <div class="col-md-9">
-                <button type="submit" class="btn btn-fill btn-rose">Sign in</button>
+                <button type="submit" class="btn btn-fill btn-rose">edit</button>
               </div>
             </div>
           </div>

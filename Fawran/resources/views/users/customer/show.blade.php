@@ -26,16 +26,16 @@
             </ul>
             <div class="tab-content tab-space">
               <div class="tab-pane active" id="link1">
-                 facebook -blahblah-
+
                 <br />
-                <br /> Email -blah@blah.com-
+                <br /> Email -{{$cus->user->email}}-
                 <br />
                 <br />
               </div>
               <div class="tab-pane" id="link2">
-                    home address :efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+
                 <br />
-                <br /> Dele address :Dramatically maintain clicks-and-mortar solutions without functional solutions.
+                <br />{{$cus->location}}
               </div>
 
             </div>
@@ -46,14 +46,14 @@
         <div class="card card-profile">
           <div class="card-avatar">
             <a href="#pablo">
-              <img class="img" src="../../assets/img/faces/marc.jpg" />
+              <img class="img" src="../../assets/img/{{$cus->image}}" />
             </a>
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">Customer</h6>
-            <h4 class="card-title">Alec Thompson</h4>
+            <h6 class="card-category text-gray">{{$cus->user->user_type->name}}</h6>
+            <h4 class="card-title">{{$cus->fullname}}</h4>
             <p class="card-description">
-            093-087-9653
+          {{$cus->phone_number}}
             </p>
 
           </div>
