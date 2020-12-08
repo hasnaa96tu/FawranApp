@@ -19,11 +19,25 @@
             <div class="card-icon">
               <i class="material-icons">contacts</i>
             </div>
-            <h4 class="card-title">Add User Type</h4>
+            <h4 class="card-title">Add Category</h4>
           </div>
           <div class="card-body ">
-            <form class="form-horizontal"action ="{{route('type.store')}}" method = "post" enctype="multipart/form-data">
+            <form class="form-horizontal"action ="{{route('category.store')}}" method = "post" enctype="multipart/form-data">
              <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+             <div class="row">
+                 <label class="col-md-3 col-form-label">type</label>
+             <div class=" col-md-9 ">
+                                       <div class="dropdown bootstrap-select">
+                                         <select class="selectpicker" name="type_id" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98">
+
+                                         @foreach($type as $t)
+                                         <option value="{{$t->id}}">{{$t->name}} </option>
+                                         @endforeach
+                                       </select>
+                                      </div>
+                                     </div>
+
+                                   </div>
 
 
 

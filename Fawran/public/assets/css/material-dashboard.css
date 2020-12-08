@@ -20462,3 +20462,17 @@ select.selectpicker {
     display: none !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+
+.bootstrap-select .dropdown-item.active {
+    background: #ff474f;
+    color: #ffffff;
+}
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus, .dropdown-menu a:hover, .dropdown-menu a:focus, .dropdown-menu a:active {
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+    background-color: #ff474f;
+    color: #FFFFFF;
+}
+
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ff474f 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}

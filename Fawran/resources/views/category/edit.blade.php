@@ -19,20 +19,37 @@
             <div class="card-icon">
               <i class="material-icons">contacts</i>
             </div>
-            <h4 class="card-title">edit User Type</h4>
+            <h4 class="card-title">edit category</h4>
           </div>
           <div class="card-body ">
 
 
-             <form class="form-horizontal" action ="{{route('type.update',$type->id)}}" method = "post" enctype="multipart/form-data">
+             <form class="form-horizontal" action ="{{route('category.update',$cat->id)}}" method = "post" enctype="multipart/form-data">
                        <input type="hidden" name="_method" value="PUT">
                     <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+                    <div class="row">
+                        <label class="col-md-3 col-form-label">type</label>
+                    <div class=" col-md-9 ">
+                                              <div class="dropdown bootstrap-select">
+                                                <select class="selectpicker" name="type_id" data-size="10" data-style="btn btn-rose btn-round" title="Single Select" tabindex="-98">
 
+                                                @foreach($type as $t)
+                                                @if($t->id == $cat->type_id)
+                                                <option value="{{$t->id}}" selected>{{$t->name}} </option>
+                                                @else
+                                                <option value="{{$t->id}}" >{{$t->name}} </option>
+                                                @endif
+                                                @endforeach
+                                              </select>
+                                             </div>
+                                            </div>
+
+                                          </div>
               <div class="row">
                 <label class="col-md-3 col-form-label">name in English</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="name" value="{{$type->name}}">
+                    <input type="text" class="form-control" name="name" value="{{$cat->name}}">
                   </div>
                 </div>
               </div>
@@ -40,7 +57,7 @@
                 <label class="col-md-3 col-form-label">name in Arabic</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control" name="name_ar" value="{{$type->name_ar}}">
+                    <input type="text" class="form-control" name="name_ar" value="{{$cat->name_ar}}">
                   </div>
                 </div>
               </div>
