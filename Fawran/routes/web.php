@@ -99,3 +99,13 @@ Route::resource('/user_type','UserTypeController');
 Route::resource('/type','TypeController');
 Route::resource('/category','CategoryController');
 Route::resource('/customer','CustomerController');
+Route::resource('/order','OrderController');
+Route::get('/order/{id}/accept','OrderController@accept');
+
+Route::put('/order/{id}/reject','OrderController@reject')->name('order.reject');
+//search
+
+Route::get('/search/orders/results','OrderController@search');
+Route::get('/search',function () {
+    return view('order.search');
+});
