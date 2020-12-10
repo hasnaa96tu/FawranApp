@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('home');
 });
 Route::get('/users/customer', function () {
     return view('users.customer.index');
@@ -109,3 +109,7 @@ Route::get('/search/orders/results','OrderController@search');
 Route::get('/search',function () {
     return view('order.search');
 });
+Route::resource('/user','UserController');
+Auth::routes();
+
+Route::get('/home', 'UserController@index')->name('home');
