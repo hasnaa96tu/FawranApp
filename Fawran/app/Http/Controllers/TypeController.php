@@ -7,6 +7,13 @@ use App\Type;
 class TypeController extends Controller
 {
     //
+    function __construct()
+    {
+         $this->middleware('permission:type-list|type-create|type-edit|type-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:type-create', ['only' => ['create','store']]);
+         $this->middleware('permission:type-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:type-delete', ['only' => ['destroy']]);
+    }
     /**
         * Display a listing of the resource.
         *

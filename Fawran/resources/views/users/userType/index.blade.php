@@ -3,7 +3,14 @@
 
 <div class="content">
   <div class="container-fluid">
+    @if ($message = Session::get('success'))
+       <div class="alert alert-success">
+           <p>{{ $message }}</p>
+       </div>
+   @endif
+
     <div class="row">
+
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-rose card-header-icon">
@@ -11,7 +18,9 @@
               <i class="material-icons">assignment</i>
             </div>
             <h4 class="card-title">all user typs</h4>
+             @can('user-type-create')
             <a href="/user_type/create">   <button class="btn btn-rose float-right">add user Type<div class="ripple-container"></div></button></a>
+              @endcan
           </div>
           <div class="card-body">
             <div class="toolbar">
@@ -43,8 +52,10 @@
                     <td>{{$ut->name}}</td>
 
                     <td class="text-right">
-
+                     @can('user-type-edit')
                       <a href="{{ route('user_type.edit', $ut->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
+                     @endcan
+                      @can('user-type-delete')
                       <a href="" class="btn btn-link btn-danger btn-just-icon remove">
                         <form action="{{ route('user_type.destroy', $ut->id) }}" method="POST"
                        style="display: inline"
@@ -56,6 +67,7 @@
                    </button>
                    </form>
                    </a>
+                   @endcan
                     </td>
                   </tr>
                   @endforeach

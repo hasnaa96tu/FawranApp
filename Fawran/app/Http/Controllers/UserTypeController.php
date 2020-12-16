@@ -8,6 +8,13 @@ use App\User;
 class UserTypeController extends Controller
 {
     //
+    function __construct()
+    {
+         $this->middleware('permission:user-type-list|user-type-create|user-type-edit|user-type-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:user-type-create', ['only' => ['create','store']]);
+         $this->middleware('permission:user-type-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:user-type-delete', ['only' => ['destroy']]);
+    }
     /**
         * Display a listing of the resource.
         *

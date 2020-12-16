@@ -3,6 +3,11 @@
 
 <div class="content">
   <div class="container-fluid">
+    @if ($message = Session::get('success'))
+       <div class="alert alert-success">
+           <p>{{ $message }}</p>
+       </div>
+   @endif
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -11,7 +16,9 @@
               <i class="material-icons">assignment</i>
             </div>
             <h4 class="card-title">all category</h4>
+              @can('category-create')
             <a href="/category/create">   <button class="btn btn-rose float-right">add  category<div class="ripple-container"></div></button></a>
+             @endcan
           </div>
           <div class="card-body">
             <div class="toolbar">
@@ -43,8 +50,10 @@
                     <td>{{$c->name}}</td>
                     <td>{{$c->type->name}}</td>
                     <td class="text-right">
-
+                      @can('category-edit')
                       <a href="{{ route('category.edit', $c->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
+                       @endcan
+                       @can('category-delete')
                       <a href="" class="btn btn-link btn-danger btn-just-icon remove">
                         <form action="{{ route('category.destroy', $c->id) }}" method="POST"
                        style="display: inline"
@@ -56,6 +65,7 @@
                    </button>
                    </form>
                    </a>
+                   @endcan
                     </td>
                   </tr>
                   @endforeach

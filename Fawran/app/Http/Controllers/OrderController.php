@@ -9,6 +9,13 @@ use App\Pharmacy_order_detail;
 class OrderController extends Controller
 {
     //
+    function __construct()
+    {
+         $this->middleware('permission:order-list|order-create|order-edit|order-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:order-create', ['only' => ['create','store']]);
+         $this->middleware('permission:order-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:order-delete', ['only' => ['destroy']]);
+    }
     /**
         * Display a listing of the resource.
         *
@@ -74,8 +81,19 @@ class OrderController extends Controller
           }
 
 
-        }
 
+        }
+        public function getCustomerOrders($id)
+        {
+            //
+            $sup=Order::where('type_id',2)->where('customer_id',$id)->get();
+            $phar=Order::where('type_id',3)->where('customer_id',$id)->get();
+
+
+            return view('order.index')
+            ->with('sup',$sup)
+            ->with('phar',$phar);
+        }
     /**
         * Show the form for creating a new resource.
         *

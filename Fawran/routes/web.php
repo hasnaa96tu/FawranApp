@@ -101,7 +101,7 @@ Route::resource('/category','CategoryController');
 Route::resource('/customer','CustomerController');
 Route::resource('/order','OrderController');
 Route::get('/order/{id}/accept','OrderController@accept');
-
+Route::get('/order/{id}/customer','OrderController@getCustomerOrders');
 Route::put('/order/{id}/reject','OrderController@reject')->name('order.reject');
 //search
 
@@ -109,7 +109,13 @@ Route::get('/search/orders/results','OrderController@search');
 Route::get('/search',function () {
     return view('order.search');
 });
-Route::resource('/user','UserController');
+
 Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('user','UserController');
+
+});

@@ -80,9 +80,21 @@
                     </div>
 
                     <div class="btn-group">
+                    @can('order-reject')
                       <button type="button" class="btn btn-sm " data-toggle="modal" data-target="#rejectModal">reject</button>
+                      @endcan
+                      @can('order-accept')
                       <a href="/order/{{$s->id}}/accept"><button type="button" class="btn btn-sm ">confirm</button></a>
-
+                      @endcan
+                      @can('order-cancel')
+                      <a href="#">
+                        <form action="{{ route('order.destroy', $s->id) }}" method="POST"
+                     style="display: inline"
+                     onsubmit="return confirm('Are you sure?');">
+                   <input type="hidden" name="_method" value="DELETE">
+                   {{ csrf_field() }}
+                    <button type="submit" ><button type="button" class="btn btn-sm ">cancel</button>   </form></a>
+                      @endcan
                     </div>
 
                   </div>
@@ -231,9 +243,21 @@
                     </div>
 
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm "data-toggle="modal" data-target="#rejectModal2">reject</button>
-                    <a href="/order/{{$s->id}}/accept">  <button type="button" class="btn btn-sm ">confirm</button></a>
-
+                      @can('order-reject')
+                        <button type="button" class="btn btn-sm " data-toggle="modal" data-target="#rejectModal2">reject</button>
+                        @endcan
+                        @can('order-accept')
+                        <a href="/order/{{$s->id}}/accept"><button type="button" class="btn btn-sm ">confirm</button></a>
+                        @endcan
+                        @can('order-cancel')
+                        <a href="#">
+                          <form action="{{ route('order.destroy', $s->id) }}" method="POST"
+                       style="display: inline"
+                       onsubmit="return confirm('Are you sure?');">
+                     <input type="hidden" name="_method" value="DELETE">
+                     {{ csrf_field() }}
+                      <button type="submit" ><button type="button" class="btn btn-sm ">cancel</button>   </form></a>
+                        @endcan
                     </div>
 
                   </div>
