@@ -64,7 +64,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/supermarket">
+        <a class="nav-link" href="/users/supermarket">
           <i class="material-icons">fastfood</i>
           <p class="">
             supermarket
@@ -72,10 +72,26 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/pharmacy">
+        <a class="nav-link" href="/users/pharmacy">
           <i class="material-icons">local_pharmacy</i>
           <p class="">
             pharmacy
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/company">
+          <i class="material-icons">local_pharmacy</i>
+          <p class="">
+            Companies
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/drug">
+          <i class="material-icons">local_pharmacy</i>
+          <p class="">
+            Drugs
           </p>
         </a>
       </li>

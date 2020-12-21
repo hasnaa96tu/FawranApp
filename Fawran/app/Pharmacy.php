@@ -19,7 +19,7 @@ class Pharmacy extends Model
 
     public function available_times(){
 
-      return $this->hasMany(Available_time::class);
+      return $this->hasMany(Available_time::class,'ph_sm_id');
     }
     public function pharmacy_order_details(){
 
