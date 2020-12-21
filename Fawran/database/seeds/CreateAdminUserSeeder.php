@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\User_type;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -14,6 +15,27 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run()
     {
+
+      $user_type= User_type::create([
+           'name'=>'admin',
+           'name_ar'=>'ادمن'
+
+      ]);
+      $user_type2= User_type::create([
+           'name'=>'editor',
+           'name_ar'=>'محرر'
+
+      ]);
+      $user_type3= User_type::create([
+           'name'=>'driver',
+           'name_ar'=>'سائق'
+
+      ]);
+      $user_type4= User_type::create([
+           'name'=>'customer',
+           'name_ar'=>'زبون'
+
+      ]);
         $user = User::create([
         	'name' => 'admin',
           'name_ar' => 'admin',
