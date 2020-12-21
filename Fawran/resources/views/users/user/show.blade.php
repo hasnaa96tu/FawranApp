@@ -21,9 +21,9 @@
             </ul>
             <div class="tab-content tab-space">
               <div class="tab-pane active" id="link1">
-                 facebook -blahblah-
+
                 <br />
-                <br /> Email -blah@blah.com-
+                <br /> Email -{{$user->email}}-
                 <br />
                 <br />
               </div>
@@ -37,14 +37,14 @@
         <div class="card card-profile">
           <div class="card-avatar">
             <a href="#pablo">
-              <img class="img" src="../../assets/img/faces/marc.jpg" />
+
             </a>
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">user</h6>
-            <h4 class="card-title">Alec Thompson</h4>
+            <h6 class="card-category text-gray">{{$user->user_type->name}}</h6>
+            <h4 class="card-title">{{$user->name}}</h4>
             <p class="card-description">
-            093-087-9653
+
             </p>
 
           </div>

@@ -3,7 +3,16 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-
+      @if (count($errors) > 0)
+        <div class="alert alert-danger">
+          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+          <ul>
+             @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+             @endforeach
+          </ul>
+        </div>
+      @endif
       <div class="col-md-12">
         <div class="card ">
           <div class="card-header card-header-rose card-header-icon">
@@ -13,62 +22,49 @@
             <h4 class="card-title">Add User</h4>
           </div>
           <div class="card-body ">
-            <form class="form-horizontal">
+
+            <form class="form-horizontal" method="POST" action="{{ route('user.store') }}">
+                @csrf
 
 
-              <div class="row">
-
-                  <label class="col-md-3 col-form-label">image</label>
-                  <div class="col-lg-9">
-                  <div class="  fileinput fileinput-new text-center" data-provides="fileinput">
-                    <div class="fileinput-new thumbnail img-circle">
-                      <img src="../../assets/img/placeholder.jpg" alt="...">
+                <div class=" row">
+                  <label for="name" class="col-md-3 col-form-label ">type</label>
+                    <div class=" col-md-9 ">
+                      <div class="dropdown bootstrap-select">
+                        <select class="selectpicker" name="type_id" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98">
+                        <option value="1">admin</option>
+                        <option value="2">driver</option>
+                        <option value="3">employee</option>
+                      </select>
                     </div>
-                    <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
-                    <div>
-                      <span class="btn  btn-rose btn-file">
-                        <span class="fileinput-new">Add Photo</span>
-                        <span class="fileinput-exists">Change</span>
-                        <input type="file" name="..." />
-                      </span>
-                      <br />
-                      <a href="#pablo" class="btn btn-danger  fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-                    </div>
-                  </div>
                 </div>
                 </div>
 
               <div class="row">
-                <label class="col-md-3 col-form-label">Fullname</label>
+                <label class="col-md-3 col-form-label">username</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <label class="col-md-3 col-form-label">Phone number</label>
-                <div class="col-md-9">
-                  <div class="form-group has-default">
-                    <input type="number" class="form-control">
-                  </div>
-                </div>
-              </div>
-              
 
-              <div class="row">
-                <label class="col-md-3 col-form-label">facebook account</label>
-                <div class="col-md-9">
-                  <div class="form-group has-default">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-              </div>
+
               <div class="row">
                 <label class="col-md-3 col-form-label">Email</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="email" class="form-control">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" class="form-control">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                 </div>
               </div>
@@ -76,9 +72,39 @@
                 <label class="col-md-3 col-form-label">Password</label>
                 <div class="col-md-9">
                   <div class="form-group">
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                 </div>
+              </div>
+              <div class="row">
+                <label class="col-md-3 col-form-label"> confirm Password</label>
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    @error('password_confirmation')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+              </div>
+              <div class=" row">
+                <label for="name" class="col-md-3 col-form-label ">role</label>
+                  <div class=" col-md-9 ">
+                    <div class="dropdown bootstrap-select">
+                      <select class="selectpicker" name="roles[]" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98" multiple>
+                      @foreach($roles as $r)
+                      <option value="{{$r->id}}">{{$r->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+              </div>
               </div>
               <div class="row">
                 <label class="col-md-3"></label>

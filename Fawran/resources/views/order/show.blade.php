@@ -37,7 +37,7 @@
                         order type
                       </td>
                       <td>
-                        resturant
+                        {{$order->type->name}}
                       </td>
 
                     </tr>
@@ -49,7 +49,7 @@
                         request date
                       </td>
                       <td>
-                        11/2/2020 5:00pm
+                        {{$order->request_date}}
                       </td>
 
                     </tr>
@@ -58,10 +58,10 @@
                         3
                       </td>
                       <td>
-                        end date
+                        delivery date
                       </td>
                       <td>
-                        11/2/2020 5:30pm
+                        {{$order->delivery_date}}
                       </td>
 
                     </tr>
@@ -73,7 +73,11 @@
                         status
                       </td>
                       <td>
+                        @if($order->status == 1 )
+                        pending
+                        @elseif($order->status == 2)
                         active
+                        @endif
                       </td>
 
                     </tr>
@@ -85,7 +89,7 @@
                         distance
                       </td>
                       <td>
-                        1km
+                        {{$order->distance}} km
                       </td>
 
                     </tr>
@@ -97,7 +101,7 @@
                       cost
                       </td>
                       <td>
-                      200$
+                      {{$order->cost}} SYP
                       </td>
 
                     </tr>
@@ -114,7 +118,7 @@
               <div class="card-icon">
                 <i class="material-icons">assignment</i>
               </div>
-              <h4 class="card-title ">meals</h4>
+              <h4 class="card-title ">items</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -124,40 +128,40 @@
                       no.
                     </th>
                     <th>
-                      meal
+                    item
                     </th>
                     <th>
                       number
                     </th>
-
+                    <th>
+                      cost
+                    </th>
                   </thead>
                   <tbody>
 
+            @foreach($items as $i)
 
                     <tr>
 
                       <td>
-                      1
+                    {{$loop->iteration}}
                       </td>
                       <td>
-                      tornado
+                        @if($i->order->type_id == 2)
+                      {{$i->product->name}}
+                      @elseif($i->order->type_id == 3)
+                      {{$i->drug->name}}
+                      @endif
                       </td>
                       <td>
-                      3
+                    {{$i->quantity}}
+                      </td>
+                      <td>
+                    {{$i->total_price}}SYP
                       </td>
                     </tr>
-                    <tr>
 
-                      <td>
-                      2
-                      </td>
-                      <td>
-                      sezar salad
-                      </td>
-                      <td>
-                      2
-                      </td>
-                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

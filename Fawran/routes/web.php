@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('home');
 });
 Route::get('/users/customer', function () {
     return view('users.customer.index');
@@ -94,6 +94,33 @@ Route::get('/supermarket/show', function () {
 Route::get('/supermarket/category/show', function () {
     return view('users.supermarket.showMaterials');
 });
+
+//hasnaa
+Route::resource('/user_type','UserTypeController');
+Route::resource('/type','TypeController');
+Route::resource('/category','CategoryController');
+Route::resource('/customer','CustomerController');
+Route::resource('/order','OrderController');
+Route::get('/order/{id}/accept','OrderController@accept');
+Route::get('/order/{id}/customer','OrderController@getCustomerOrders');
+Route::put('/order/{id}/reject','OrderController@reject')->name('order.reject');
+//search
+
+Route::get('/search/orders/results','OrderController@search');
+Route::get('/search',function () {
+    return view('order.search');
+});
+
+Auth::routes();
+
+Route::get('/home', 'UserController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('user','UserController');
+
+});
+
 //Rahaf
 //Pharmacy Routes
 Route::get('/users/pharmacy', 'PharmacyController@index')->name('pharmacy.index');
@@ -126,5 +153,4 @@ Route::post('/users/drug/create', 'DrugController@store')->name('drug.store');
 Route::get('/users/drug/edit/{id}', 'DrugController@edit')->name('drug.edit');
 Route::post('/users/drug/update/{id}', 'DrugController@update')->name('drug.update');
 Route::get('/users/drug/{id}', 'DrugController@destroy')->name('drug.destroy');
-
 
