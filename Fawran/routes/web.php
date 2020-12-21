@@ -41,9 +41,9 @@ Route::get('/users/user', function () {
 Route::get('/users/user/show', function () {
     return view('users.user.show');
 });
-Route::get('/users/pharmacy/create', function () {
-    return view('users.pharmacy.create');
-});
+// Route::get('/users/pharmacy/create', function () {
+//     return view('users.pharmacy.create');
+// });
 Route::get('/users/pharmacy', function () {
     return view('users.pharmacy.index');
 });
@@ -57,9 +57,9 @@ Route::get('/dashboard', function () {
 Route::get('/resturant', function () {
     return view('resturant.index');
 });
-Route::get('/pharmacy', function () {
-    return view('pharmacy.index');
-});
+// Route::get('/pharmacy', function () {
+//     return view('pharmacy.index');
+// });
 Route::get('/driver', function () {
     return view('drivers.index');
 });
@@ -95,6 +95,7 @@ Route::get('/supermarket/category/show', function () {
     return view('users.supermarket.showMaterials');
 });
 
+//hasnaa
 Route::resource('/user_type','UserTypeController');
 Route::resource('/type','TypeController');
 Route::resource('/category','CategoryController');
@@ -119,3 +120,37 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('user','UserController');
 
 });
+
+//Rahaf
+//Pharmacy Routes
+Route::get('/users/pharmacy', 'PharmacyController@index')->name('pharmacy.index');
+Route::get('/users/pharmacy/create', 'PharmacyController@create')->name('pharmacy.create');
+Route::post('/users/pharmacy/create', 'PharmacyController@store')->name('pharmacy.store');
+Route::get('/users/pharmacy/edit/{id}', 'PharmacyController@edit')->name('pharmacy.edit');
+Route::post('/users/pharmacy/update/{id}', 'PharmacyController@update')->name('pharmacy.update');
+Route::get('/users/pharmacy/{id}', 'PharmacyController@destroy')->name('pharmacy.destroy');
+
+//Supermarket Routes
+Route::get('/users/supermarket', 'SupermarketController@index')->name('supermarket.index');
+Route::get('/users/supermarket/create', 'SupermarketController@create')->name('supermarket.create');
+Route::post('/users/supermarket/create', 'SupermarketController@store')->name('supermarket.store');
+Route::get('/users/supermarket/edit/{id}', 'SupermarketController@edit')->name('supermarket.edit');
+Route::post('/users/supermarket/update/{id}', 'SupermarketController@update')->name('supermarket.update');
+Route::get('/users/supermarket/{id}', 'SupermarketController@destroy')->name('supermarket.destroy');
+
+//Medical Companies
+Route::get('/users/company', 'MedicalCompanyController@index')->name('company.index');
+Route::get('/users/company/create', 'MedicalCompanyController@create')->name('company.create');
+Route::post('/users/company/create', 'MedicalCompanyController@store')->name('company.store');
+Route::get('/users/company/edit/{id}', 'MedicalCompanyController@edit')->name('company.edit');
+Route::post('/users/company/update/{id}', 'MedicalCompanyController@update')->name('company.update');
+Route::get('/users/company/{id}', 'MedicalCompanyController@destroy')->name('company.destroy');
+
+//Drugs
+Route::get('/users/drug', 'DrugController@index')->name('drug.index');
+Route::get('/users/drug/create', 'DrugController@create')->name('drug.create');
+Route::post('/users/drug/create', 'DrugController@store')->name('drug.store');
+Route::get('/users/drug/edit/{id}', 'DrugController@edit')->name('drug.edit');
+Route::post('/users/drug/update/{id}', 'DrugController@update')->name('drug.update');
+Route::get('/users/drug/{id}', 'DrugController@destroy')->name('drug.destroy');
+

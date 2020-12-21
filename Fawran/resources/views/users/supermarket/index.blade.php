@@ -10,8 +10,8 @@
             <div class="card-icon">
               <i class="material-icons">assignment</i>
             </div>
-            <h4 class="card-title float-left">all supermarkets</h4>
-          <a href="/supermarket/create">   <button class="btn btn-rose float-right">add supermarket<div class="ripple-container"></div></button></a>
+            <h4 class="card-title">All Supermarkets</h4>
+              <a href="/users/supermarket/create">   <button class="btn btn-rose float-right">Add Supermarket<div class="ripple-container"></div></button></a>
           </div>
           <div class="card-body">
             <div class="toolbar">
@@ -21,478 +21,29 @@
               <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>phone number</th>
-                    <th>location</th>
-                    <th>category number</th>
-                    <th>weekend day</th>
-
-                    <th>opening time</th>
-                    <th>closing time</th>
-
+                    <th>Supermarket Name</th>
+                    <th>Location</th>
+                    <th>Phone Number</th>
                     <th class="disabled-sorting text-right">Actions</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Name</th>
-                    <th>phone number</th>
-                    <th>location</th>
-                    <th>category number</th>
-                    <th>weekend day</th>
-                    <th>opening time</th>
-                    <th>closing time</th>
-                    <th class="text-right">Actions</th>
-                  </tr>
-                </tfoot>
+              
                 <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
+
+                    @foreach($supermarkets as $supermarket)
+                            <tr>
+                    <td>{{$supermarket->name}}</td>
+                    <td>{{$supermarket->location	}}</td>
+                    <td>{{$supermarket->phone_number}}</td>
 
                     <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
+                      <a href="/users/supermarket/{{$supermarket->id}}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
+                      <a href="{{ route('supermarket.edit', $supermarket->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
+                      <a href="{{route('supermarket.destroy' , $supermarket->id)}}" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">trash</i></a>
+                                            </td>
+                      </tr>
+                    @endforeach
 
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>098765321</td>
-                    <td>Tiger Nixon</td>
-                    <td>blahhh@blalhh.com</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-                    <td>Tiger Nixon</td>
-
-                    <td class="text-right">
-                      <a href="/supermarket/show" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">preview</i></a>
-                      <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
-                    </td>
-                  </tr>
 
 
                 </tbody>
@@ -525,23 +76,19 @@
           searchPlaceholder: "Search records",
         }
       });
-
       var table = $('#datatable').DataTable();
-
       // Edit record
       table.on('click', '.edit', function() {
         $tr = $(this).closest('tr');
         var data = table.row($tr).data();
         alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
       });
-
       // Delete a record
       table.on('click', '.remove', function(e) {
         $tr = $(this).closest('tr');
         table.row($tr).remove().draw();
         e.preventDefault();
       });
-
       //Like record
       table.on('click', '.like', function() {
         alert('You clicked on Like button');
