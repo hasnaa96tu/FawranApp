@@ -8,7 +8,15 @@ use App\Available_time;
 
 class SupermarketController extends Controller
 {
-    
+
+  function __construct()
+  {
+       $this->middleware('permission:supermarket-list|supermarket-create|supermarket-edit|supermarket-delete', ['only' => ['index','show']]);
+       $this->middleware('permission:supermarket-create', ['only' => ['create','store']]);
+       $this->middleware('permission:supermarket-edit', ['only' => ['edit','update']]);
+       $this->middleware('permission:supermarket-delete', ['only' => ['destroy']]);
+  }
+
    //Show All Supermarkets
    public function index()
    {
@@ -19,7 +27,7 @@ class SupermarketController extends Controller
    //Create New Supermarket View
    public function create()
    {
-       
+
        return view('users.supermarket.create');
    }
 
@@ -35,7 +43,7 @@ class SupermarketController extends Controller
           'location_ar'=>'required',
           'phone_number'=>'required',
           'image'=>'required',
-        
+
 
         ]);
         $supermarket= new Supermarket();
@@ -74,11 +82,11 @@ class SupermarketController extends Controller
        return view('users.supermarket.show')
        ->with('cus',$cus);
    }
-   
+
   //Edit Specific Supermarket
    public function edit($id)
    {
-       
+
        $supermarket=Supermarket::find($id);
        return view('users.supermarket.edit')->with('supermarket',$supermarket);
    }
@@ -86,7 +94,7 @@ class SupermarketController extends Controller
     // Update Specific Supermarket
    public function update(Request $request,$id)
    {
-       
+
 
        request()->validate([
            'category_id'=>'required',
@@ -96,7 +104,7 @@ class SupermarketController extends Controller
            'location_ar'=>'required',
            'phone_number'=>'required',
            'image'=>'required',
-         
+
 
 
 
@@ -129,15 +137,15 @@ class SupermarketController extends Controller
             $supermarket->update();
 
             $ph_sm_id = $id;
-                
+
             $available= Available_time::where('ph_sm_id', $ph_sm_id)->firstOrFail();
             $available->type_id = $request->type_id;
-         
+
             $available->open_time=$request->open_time;
             $available->close_time=$request->close_time;
-          
+
             $available->save();
-     
+
 
       return redirect('/users/supermarket');
    }
@@ -145,9 +153,9 @@ class SupermarketController extends Controller
    // Delete supermarket By ID
    public function destroy($id)
    {
-       
+
        $supermarket=Supermarket::findOrFail($id);
-     
+
        $supermarket->delete();
 
        return redirect('/users/supermarket/');

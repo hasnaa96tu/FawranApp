@@ -53,6 +53,48 @@ class PermissionTableSeeder extends Seeder
            'order-accept',
            'order-reject',
            'order-cancel',
+
+           'pharmacy-list',
+           'pharmacy-create',
+           'pharmacy-edit',
+           'pharmacy-delete',
+
+           'supermarket-list',
+           'supermarket-create',
+           'supermarket-edit',
+           'supermarket-delete',
+
+           'company-list',
+           'company-create',
+           'company-edit',
+           'company-delete',
+
+           'drug-list',
+           'drug-create',
+           'drug-edit',
+           'drug-delete',
+
+           'product-list',
+           'product-create',
+           'product-edit',
+           'product-delete',
+
+           'offer-list',
+           'offer-create',
+           'offer-edit',
+           'offer-delete',
+
+           'feedback-list',
+           'feedback-create',
+           'feedback-edit',
+           'feedback-delete',
+
+           'apprate-list',
+           'apprate-create',
+           'apprate-edit',
+           'apprate-delete',
+
+
         ];
 
         foreach ($permissions as $permission) {
