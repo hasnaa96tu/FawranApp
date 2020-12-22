@@ -36,6 +36,7 @@ class CreateAdminUserSeeder extends Seeder
            'name_ar'=>'زبون'
 
       ]);
+
       $user_type5= User_type::create([
            'name'=>'supermarket',
            'name_ar'=>'بقالية'
@@ -46,6 +47,7 @@ class CreateAdminUserSeeder extends Seeder
            'name_ar'=>'صيدلية'
 
       ]);
+
         $user = User::create([
         	'name' => 'admin',
           'name_ar' => 'admin',
