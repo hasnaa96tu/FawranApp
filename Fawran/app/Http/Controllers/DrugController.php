@@ -7,6 +7,14 @@ use App\Drug;
 
 class DrugController extends Controller
 {
+
+  function __construct()
+  {
+       $this->middleware('permission:drug-list|drug-create|drug-edit|drug-delete', ['only' => ['index','show']]);
+       $this->middleware('permission:drug-create', ['only' => ['create','store']]);
+       $this->middleware('permission:drug-edit', ['only' => ['edit','update']]);
+       $this->middleware('permission:drug-delete', ['only' => ['destroy']]);
+  }
       //Show All Drugs
       public function index()
       {
@@ -35,8 +43,8 @@ class DrugController extends Controller
            'category_id'=>'required',
            'is_aviliable'=>'required',
            'image'=>'required',
-         
-         
+
+
 
          ]);
          $Drug= new Drug();
@@ -56,12 +64,12 @@ class DrugController extends Controller
          */
          $request->image->move(public_path('assets/img'), $img2);
          $Drug->image=$img2;
- 
+
          $Drug->save();
 
 
 
        return redirect('/users/drug');
     }
-  
+
 }

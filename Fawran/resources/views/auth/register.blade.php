@@ -3,6 +3,15 @@
 @section('content')
 <div class="content">
 <div class="container-fluid">
+  @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5" >
@@ -19,7 +28,7 @@
                           <label for="name" class="col-md-4 col-form-label text-md-right">type</label>
                             <div class=" col-md-6 ">
                               <div class="dropdown bootstrap-select">
-                                <select class="selectpicker" name="type_id" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98">
+                                <select class="selectpicker" name="user_type_id" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98">
                                 <option value="1">admin</option>
                                 <option value="2">driver</option>
                                 <option value="3">employee</option>

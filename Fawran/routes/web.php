@@ -60,9 +60,7 @@ Route::get('/resturant', function () {
 // Route::get('/pharmacy', function () {
 //     return view('pharmacy.index');
 // });
-Route::get('/driver', function () {
-    return view('drivers.index');
-});
+
 Route::get('/driver/create', function () {
     return view('drivers.create');
 });
@@ -111,6 +109,8 @@ Route::get('/search',function () {
     return view('order.search');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');
@@ -120,6 +120,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('user','UserController');
 
 });
+//drivers
+Route::get('/drivers','UserController@index_driver');
 
 //Rahaf
 //Pharmacy Routes
@@ -153,4 +155,3 @@ Route::post('/users/drug/create', 'DrugController@store')->name('drug.store');
 Route::get('/users/drug/edit/{id}', 'DrugController@edit')->name('drug.edit');
 Route::post('/users/drug/update/{id}', 'DrugController@update')->name('drug.update');
 Route::get('/users/drug/{id}', 'DrugController@destroy')->name('drug.destroy');
-

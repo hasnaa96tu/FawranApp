@@ -23,6 +23,13 @@ class UserController extends Controller
         return view('users.user.index')
         ->with('users',$users);
     }
+    public function index_driver()
+    {
+        //
+        $users=User::where('user_type_id','3')->get();
+        return view('drivers.index')
+        ->with('users',$users);
+    }
 
     /**
      * Show the form for creating a new resource.

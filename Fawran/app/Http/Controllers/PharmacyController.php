@@ -8,6 +8,13 @@ use App\Available_time;
 
 class PharmacyController extends Controller
 {
+  function __construct()
+  {
+       $this->middleware('permission:pharmacy-list|pharmacy-create|pharmacy-edit|pharmacy-delete', ['only' => ['index','show']]);
+       $this->middleware('permission:pharmacy-create', ['only' => ['create','store']]);
+       $this->middleware('permission:pharmacy-edit', ['only' => ['edit','update']]);
+       $this->middleware('permission:pharmacy-delete', ['only' => ['destroy']]);
+  }
 
    //Show All Pharmacies
     public function index()
@@ -19,7 +26,7 @@ class PharmacyController extends Controller
     //Create New Pharmacy View
     public function create()
     {
-        
+
         return view('users.pharmacy.create');
     }
 
@@ -35,7 +42,7 @@ class PharmacyController extends Controller
            'location_ar'=>'required',
            'phone_number'=>'required',
            'image'=>'required',
-         
+
 
          ]);
          $pharmacy= new Pharmacy();
@@ -63,7 +70,7 @@ class PharmacyController extends Controller
        $available->ph_sm_id=$pharmacy->id;
        $available->open_time=$request->open_time;
        $available->close_time=$request->close_time;
-     
+
        $days_string = $request->offDay;
        $days  = implode(', ', $days_string );
        $available->days= $days;
@@ -79,11 +86,11 @@ class PharmacyController extends Controller
         return view('users.customer.show')
         ->with('cus',$cus);
     }
-    
+
    //Edit Specific Pharmacy
     public function edit($id)
     {
-        
+
         $pharmacy=Pharmacy::find($id);
         return view('users.pharmacy.edit')->with('pharmacy',$pharmacy);
     }
@@ -91,7 +98,7 @@ class PharmacyController extends Controller
      // Update Specific Pharmacy
     public function update(Request $request,$id)
     {
-        
+
 
         request()->validate([
             'category_id'=>'required',
@@ -101,7 +108,7 @@ class PharmacyController extends Controller
             'location_ar'=>'required',
             'phone_number'=>'required',
             'image'=>'required',
-          
+
 
 
 
@@ -134,28 +141,28 @@ class PharmacyController extends Controller
                  $pharmacy->update();
 
                  $ph_sm_id = $id;
-                
+
                  $available= Available_time::where('ph_sm_id', $ph_sm_id)->firstOrFail();
                  $available->type_id = $request->type_id;
-              
+
                  $available->open_time=$request->open_time;
                  $available->close_time=$request->close_time;
-               
+
                  $days_string = $request->offDay;
                  $days  = implode(', ', $days_string );
                  $available->days= $days;
                  $available->save();
-          
-               
+
+
        return redirect('/users/pharmacy');
     }
 
     // Delete Pharmacy By ID
     public function destroy($id)
     {
-        
+
         $pharmacy=Pharmacy::findOrFail($id);
-      
+
         $pharmacy->delete();
 
         return redirect('/users/pharmacy');

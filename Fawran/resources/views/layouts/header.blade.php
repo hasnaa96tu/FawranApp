@@ -14,17 +14,17 @@
 
     <div class="user">
 
-      <div class="photo">
-        <img src="/assets/img/faces/avatar.jpg" />
-      </div>
+
       <div class="user-info">
-        <a data-toggle="collapse" href="#collapseExample" class="username">
+        <a data-toggle="collapse" href="#collapseExample" class="username ml-5">
           <span>
               @guest
+              guest
             @else
             {{ Auth::user()->name }}
-           @endguest
             <b class="caret"></b>
+           @endguest
+
           </span>
         </a>
           @guest
@@ -93,7 +93,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/driver">
+        <a class="nav-link" href="/drivers">
           <i class="material-icons">directions_bike</i>
           <p class="">
           drivers
@@ -132,6 +132,7 @@
           </p>
         </a>
       </li>
+      @can('user-list'|| 'customer-list')
       <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#22">
           <i class="material-icons">account_box</i>
@@ -140,6 +141,7 @@
           </p>
         </a>
       </li>
+      @endcan
         <div class="collapse" id="22">
       <li class="nav-item ">
         @can('user-list')
@@ -209,39 +211,8 @@
         </div>
         @endcan
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#pagesExamples3">
-          <i class="material-icons">face</i>
-          <p> Resturant
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse" id="pagesExamples3">
-          <ul class="nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="/users/resturant/create">
-                <span class="sidebar-mini"> ar </span>
-                <span class="sidebar-normal"> add Resturant </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="/users/resturant">
-                <span class="sidebar-mini"> alr </span>
-                <span class="sidebar-normal">all Resturants  </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="/users/resturant/show">
-                <span class="sidebar-mini"> sr </span>
-                <span class="sidebar-normal"> show Resturant  </span>
-              </a>
-            </li>
 
-
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item ">
+      <!-- <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#pagesExamples4">
           <i class="material-icons">face</i>
           <p> Pharmacy
@@ -272,7 +243,7 @@
 
           </ul>
         </div>
-      </li>
+      </li> -->
     </div>
     </ul>
   </div>
