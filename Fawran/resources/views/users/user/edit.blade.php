@@ -23,7 +23,7 @@
           </div>
           <div class="card-body ">
 
-            <form class="form-horizontal" method="POST" action="{{ route('user.store') }}">
+            <form class="form-horizontal" method="POST" action="{{route('user.update',$u->id)}}">
                 @csrf
 
 
@@ -32,9 +32,10 @@
                     <div class=" col-md-9 ">
                       <div class="dropdown bootstrap-select">
                         <select class="selectpicker" name="type_id" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98">
-                          <option value="1">admin</option>
-                          <option value="2">editor</option>
-                          <option value="3">driver</option>
+                        <option value=""></option>
+                        <option value="1">admin</option>
+                        <option value="2">editor</option>
+                        <option value="3">driver</option>
                       </select>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
                 <label class="col-md-3 col-form-label">username</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$u->name}}">
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -59,7 +60,7 @@
                 <label class="col-md-3 col-form-label">Email</label>
                 <div class="col-md-9">
                   <div class="form-group has-default">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" class="form-control">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" class="form-control" value="{{$u->name}}">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -99,9 +100,11 @@
                   <div class=" col-md-9 ">
                     <div class="dropdown bootstrap-select">
                       <select class="selectpicker" name="roles[]" data-size="10" data-style="btn btn-rose btn-round"  tabindex="-98" multiple>
-                      @foreach($roles as $r)
-                      <option value="{{$r->id}}">{{$r->name}}</option>
-                      @endforeach
+
+                      <option value="1">admin</option>
+                      <option value="2">editor</option>
+                      <option value="3">driver</option>
+
                     </select>
                   </div>
               </div>
@@ -124,7 +127,7 @@
           <div class="card-footer ">
             <div class="row">
               <div class="col-md-9">
-                <button type="submit" class="btn btn-fill btn-rose">Sign in</button>
+                <button type="submit" class="btn btn-fill btn-rose">save</button>
               </div>
             </div>
           </div>
