@@ -86,11 +86,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $u = User::find($id);
         $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $userRole = $u->roles->pluck('name','name')->all();
 
-        return view('users.user.edit',compact('user','roles','userRole'));
+        return view('users.user.edit',compact('u','roles','userRole'));
     }
 
     /**

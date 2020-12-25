@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Supermarket;
+use App\Pharmacy;
+use App\Customer;
 use App\Supermarket_order_detail;
 use App\Pharmacy_order_detail;
 class OrderController extends Controller
@@ -24,10 +27,32 @@ class OrderController extends Controller
         public function index()
         {
             //
-            $sup=Order::where('type_id',2)->get();
-            $phar=Order::where('type_id',3)->get();
+            $sup=Order::where('type_id',1)->get();
+            $phar=Order::where('type_id',2)->get();
             return view('order.index')
             ->with('sup',$sup)
+            ->with('phar',$phar)
+            ;
+        }
+        public function index_super($id)
+        {
+            //
+
+            $supp=Supermarket::where('user_id',$id)->first();
+            $sup=Supermarket_order_detail::where('supermarket_id',$supp->id)->get();
+
+            return view('order.indexSuper')
+            ->with('sup',$sup)
+
+            ;
+        }
+        public function index_phar($id)
+        {
+            //
+             $p=Pharmacy::where('user_id',$id)->first();
+            $phar=Pharmacy_order_detail::where('Pharmacy_id',$p->id)->get();
+            return view('order.indexPhar')
+
             ->with('phar',$phar)
             ;
         }
@@ -72,8 +97,8 @@ class OrderController extends Controller
           }else{
 
 
-            $sup=Order::where('type_id',2)->get();
-            $phar=Order::where('type_id',3)->get();
+            $sup=Order::where('type_id',1)->get();
+            $phar=Order::where('type_id',2)->get();
             return view('order.index')
             ->with('sup',$sup)
             ->with('phar',$phar)
@@ -86,8 +111,9 @@ class OrderController extends Controller
         public function getCustomerOrders($id)
         {
             //
-            $sup=Order::where('type_id',2)->where('customer_id',$id)->get();
-            $phar=Order::where('type_id',3)->where('customer_id',$id)->get();
+            $c=Customer::where('user_id',$id)->first();
+            $sup=Order::where('type_id',1)->where('customer_id',$c->id)->get();
+            $phar=Order::where('type_id',2)->where('customer_id',$c->id)->get();
 
 
             return view('order.index')
@@ -128,9 +154,9 @@ class OrderController extends Controller
         //
 
         $order=Order::find($id);
-        if ($order->type_id == 2){
+        if ($order->type_id == 1){
           $items=Supermarket_order_detail::where('order_id',$id)->get();
-        }elseif($order->type_id == 3){
+        }elseif($order->type_id == 2){
           $items=Pharmacy_order_detail::where('order_id',$id)->get();
         }
 
